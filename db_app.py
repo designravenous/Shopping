@@ -3,9 +3,9 @@ from pymongo import MongoClient
 
 class db_interaction_class:
     def __init__(self, python_dictionary, db_item, replacement_item):
-        Mongodb_URI = "mongodb://xxx:xxx@ds151292.mlab.com:51292/somedatabase"
+        Mongodb_URI = "mongodb://xxx:xxx@ds151292.mlab.com:51292/database"
         client = MongoClient(Mongodb_URI, connectTimeoutMS=30000)
-        db = client.get_database('somedatabase')
+        db = client.get_database('database')
         user_records = db.user_baskets
         self.user_records = user_records
         self.python_dictionary = python_dictionary
@@ -34,3 +34,11 @@ class db_interaction_class:
         new_query = {'$set':{'item':self.replacement_item}}
         self.user_records.update_one(myquery, new_query)
 
+    def change_inbasket_status(self):
+        finding_item = self.user_records.find_one({'item':self.db_item})
+        myquery = {'added_to_basket':finding_item['added_to_basket']}
+        if finding_item['added_to_basket'] == False:
+            new_query = {'$set':{'added_to_basket':True}}
+        else:
+            new_query = {'$set':{'added_to_basket':False}}
+        self.user_records.update_one(myquery,new_query)
