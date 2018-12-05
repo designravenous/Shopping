@@ -5,10 +5,11 @@ import random
 record = {
     "user_name": "Peter",
     "item": "Stadium",
-    "quantity": 10,
+    "quantity": 1,
     "date": "2018-01-01",
     "time": "10:43",
-    "_id": "1212"
+    "_id": "1212",
+    "added_to_basket":False
 }
 
 item = "godis"
@@ -16,8 +17,34 @@ new_item = "GODIS"
 
 def setting_time():
     date = datetime.datetime.now()
-    todays_date = str(date.year) + "-" + str(date.month) + "-" + str(date.day)
-    current_time = str(date.hour) + ":" + str(date.minute) + ":" + str(date.second)
+    m = date.month
+    d = date.day
+    h = date.hour
+    min_ = date.minute
+    sec = date.second
+
+    if m <= 9:
+        month = "0" + str(m)
+    else:
+        month = str(m)
+    if d <= 9:
+        day = "0" + str(d)
+    else:
+        day = str(d)
+    if h <= 9:
+        hour = "0" + str(h)
+    else:
+        hour = str(h)
+    if min_ <= 9:
+        minute = "0" + str(min_)
+    else:
+        minute = str(min_)
+    if sec <= 9:
+        second = "0" + str(sec)
+    else:
+        second = str(sec)
+    todays_date = str(date.year) + "-" + month + "-" + day
+    current_time = hour + ":" + minute + ":" + second
     time = [todays_date, current_time]
     return time
 
