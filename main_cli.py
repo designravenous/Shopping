@@ -51,7 +51,7 @@ def setting_time():
 loop_Value = True
 
 while loop_Value:
-    db_options = input('VIEW, ADD, REMOVE, MODIFY or EXIT:  ')
+    db_options = input('VIEW, ADD, REMOVE, MODIFY, INBASKET or EXIT:  ')
 
     if db_options.lower() == 'view':
         db_call = db_app.db_interaction_class(record,item,new_item)
@@ -84,6 +84,10 @@ while loop_Value:
         new_item = str(input('Enter Replacement Item: '))
         db_call = db_app.db_interaction_class(record, item, new_item)
         db_call.modify_document_item()
+    elif db_options.lower() == 'inbasket':
+        item = str(input('Change basket status, for item: '))
+        db_call = db_app.db_interaction_class(record,item,new_item)
+        db_call.change_inbasket_status()
     else:
         print('Unknown input\n')
 
