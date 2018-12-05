@@ -55,8 +55,9 @@ while loop_Value:
 
     if db_options.lower() == 'view':
         db_call = db_app.db_interaction_class(record,item,new_item)
-        db_call.view_document()
-        print('\n')
+        response = db_call.view_document()
+        for document in response:
+            print(document['user_name'],document['item'],document['added_to_basket'],document['quantity'],document['_id'], document['date'], document['time'])
     elif db_options.lower() == 'exit':
         print('Exit Program')
         loop_Value = False
