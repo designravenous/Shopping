@@ -3,9 +3,9 @@ from pymongo import MongoClient
 
 class db_interaction_class:
     def __init__(self, python_dictionary, db_item, replacement_item):
-        Mongodb_URI = "mongodb://xxx:xxx@ds151292.mlab.com:51292/somedatabase"
+        Mongodb_URI = "mongodb://test:test123@ds151292.mlab.com:51292/mydatabase"
         client = MongoClient(Mongodb_URI, connectTimeoutMS=30000)
-        db = client.get_database('somedatabase')
+        db = client.get_database('mydatabase')
         user_records = db.user_baskets
         self.user_records = user_records
         self.python_dictionary = python_dictionary
@@ -14,8 +14,10 @@ class db_interaction_class:
         
     def view_document(self):
         cursor = self.user_records.find({})
+        dic_list =[]
         for document in cursor:
-            print(document['user_name'],document['item'],document['added_to_basket'],document['quantity'],document['_id'], document['date'], document['time'])
+            dic_list.append({'user_name':document['user_name'],'item':document['item'],'quantity':document['quantity'],'date':document['date'],'time':document['time'],'_id':document['_id'], 'added_to_basket':document['added_to_basket']})
+        return dic_list
 
     def create_document(self):
         self.user_records.insert_one(self.python_dictionary)
@@ -31,3 +33,4 @@ class db_interaction_class:
         myquery = {'item':finding_item['item']}
         new_query = {'$set':{'item':self.replacement_item}}
         self.user_records.update_one(myquery, new_query)
+
