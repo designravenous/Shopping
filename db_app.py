@@ -3,9 +3,9 @@ from pymongo import MongoClient
 
 class db_interaction_class:
     def __init__(self, python_dictionary, db_item, replacement_item):
-        Mongodb_URI = "mongodb://xxx:xxx@ds151292.mlab.com:51292/database"
+        Mongodb_URI = "mongodb://test:test123@ds151292.mlab.com:51292/mydatabase"
         client = MongoClient(Mongodb_URI, connectTimeoutMS=30000)
-        db = client.get_database('database')
+        db = client.get_database('mydatabase')
         user_records = db.user_baskets
         self.user_records = user_records
         self.python_dictionary = python_dictionary
