@@ -63,7 +63,7 @@ while loop_Value:
         loop_Value = False
     elif db_options.lower() == 'add':
         try:
-            item = str(input('Enter Item to add: '))
+            item = str(input('Enter Item to add: ')).upper()
             updated_time = setting_time()
             record['item'] = item
             record['date'] = updated_time[0]
@@ -75,17 +75,18 @@ while loop_Value:
         except:
             print('Unable to add item')
     elif db_options.lower() == 'remove':
-        item = str(input('What item would you like to remove? '))
+        item = str(input('What item would you like to remove? ')).upper()
         db_call = db_app.db_interaction_class(record, item, new_item)
         db_call.delete_document()
 
     elif db_options.lower() == 'modify':
-        item = str(input('What Item would you like to modify? '))
-        new_item = str(input('Enter Replacement Item: '))
+        item = str(input('What Item would you like to modify? ')).upper()
+        new_item = str(input('Enter Replacement Item: ')).upper()
         db_call = db_app.db_interaction_class(record, item, new_item)
         db_call.modify_document_item()
+        #KOLLA VARFÖR DENNA INTE FUNGERAR!!!! INBASKET
     elif db_options.lower() == 'inbasket':
-        item = str(input('Change basket status, for item: '))
+        item = str(input('Change basket status, for item: ')).upper()
         db_call = db_app.db_interaction_class(record,item,new_item)
         db_call.change_inbasket_status()
     else:
