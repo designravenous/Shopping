@@ -1,0 +1,48 @@
+
+{% extends 'bootstrap/base.html' %}
+{% block title %} Shopping_App {% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-expand-sm navbar-inverse bg-info ">
+    <p style="margin-left: 2%; color:white"><small>Welcome, {{ user }}</small></p>
+</nav>
+
+{% endblock %}
+{% block body %}
+{{ super() }}
+<div class="container">
+    <div class="row">
+        <h2>SHOPPING BAG</h2>
+        <p class="visible-md visible-lg"><small>All Content Owned by RavenousDesign</small></p>
+        <h5 class="visible-sm visible-xs">To Add:</h5>
+<table class="table table-striped">
+        <div class="col-xs-12">
+    <tread>
+    <tr>
+    <th class="text-center"style="font-family: 'Major Mono Display', monospace;">ITEMS</th>
+    <th class="text-center visible-md visible-lg"style="font-family: 'Major Mono Display', monospace;">ADDED BY:</th>
+</tr>
+</tread>
+<tbody>
+{% for item in todo_list %}
+    <tr>
+    <td class="text-center" style="font-family: 'Major Mono Display', monospace;">{{ item['item'].upper() }}</td>
+    <td class="text-center visible-md visible-lg" style="font-family: 'Major Mono Display', monospace;">{{ item['user_name'] }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+<h5>Already Added:</h5>
+<table class="table table-striped">
+    <tbody>
+    {% for goodie in added_list %}
+    <tr class="success">
+    <td class="text-center" style="font-family: 'Major Mono Display', monospace;"><del>{{ goodie['item'].upper() }}</del></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+</div>
+</div>
+
+{% endblock %}
