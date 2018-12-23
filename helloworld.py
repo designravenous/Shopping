@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, redirect
 import db_app
 from flask_bootstrap import Bootstrap
 
@@ -21,6 +21,16 @@ def index():
         else:
             todo_list.append(item)
     return render_template('index.html', user=user, todo_list=todo_list, added_list=added_list)
+
+
+@app.route('/second/<item_name>')
+def change_basket_status(item_name):
+    #TO_DO add username
+    user = "Peter"
+    dicta ="s"
+    f2 = db_app.db_interaction_class(dicta, item_name, user)
+    f2.change_inbasket_status()
+    return redirect(url_for('index'))
 
 
 
