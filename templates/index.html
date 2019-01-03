@@ -12,8 +12,8 @@
 <div class="container">
     <div class="row">
         <h2>SHOPPING BAG</h2>
-        <p class="visible-md visible-lg"><small>All Content Owned by RavenousDesign</small></p>
-        <h5 class="visible-sm visible-xs">To Add:</h5>
+        <p class="visible-md visible-lg col-xs-3"><small>All Content Owned by RavenousDesign</small></p>
+        <h5 class="visible-sm visible-xs ">To Add:</h5>
 <table class="table table-striped">
         <div class="col-xs-12">
     <tread>
@@ -41,6 +41,8 @@
     {% endfor %}
 </tbody>
 </table>
+    <h1 class="col-xs-4"></h1><a href= {{ url_for('remove_inbasket') }} type="button" class="col-xs-4 btn btn-primary">Delete Items</a><h1 class="col-xs-4"></h1>
+
 
 </div>
 </div>
