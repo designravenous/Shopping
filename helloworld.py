@@ -32,6 +32,27 @@ def change_basket_status(item_name):
     f2.change_inbasket_status()
     return redirect(url_for('index'))
 
+@app.route('/delete_in_basket')
+def remove_inbasket():
+    user = "Peter"
+    some = "i"
+    thing = "u"
+    not_inbasket = []
+    f1 = db_app.db_interaction_class(user,some,thing)
+    shoppinglist = f1.view_document()
+    for item in shoppinglist:
+        if item["added_to_basket"] == True:
+            f2 =db_app.db_interaction_class(user, item['item'], thing)
+            f2.delete_document()
+            print(item)
+        else:
+            not_inbasket.append(item)
+    return redirect(url_for('index'))
+        
+
+
+
+
 
 
 if __name__ == '__main__':
