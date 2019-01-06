@@ -12,8 +12,20 @@
 <div class="container">
     <div class="row">
         <h2>SHOPPING BAG</h2>
-        <p class="visible-md visible-lg col-xs-3"><small>All Content Owned by RavenousDesign</small></p>
-        <h5 class="visible-sm visible-xs ">To Add:</h5>
+        <p class="visible-md visible-lg col-xs-3"><small>All Content Owned by DesignRavenous</small></p>
+        <h5 class="visible-sm visible-xs col-xs-3">Items:</h5>
+        <div class="dropdown pull-right">
+            <a class="dropdown-toggle btn btn-default " data-toggle="dropdown">
+                OPTIONS <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="btn"><a href="#">Add Item</a></li>
+                <li class="btn"><a href="#">Delete All Items</a></li>
+                <li class="btn"><a href="#">Modify Item</a></li>
+            </ul>
+        </div>
+    </br>
+</br>
 <table class="table table-striped">
         <div class="col-xs-12">
     <tread>
@@ -31,7 +43,7 @@
 {% endfor %}
 </tbody>
 </table>
-<h5>Already Added:</h5>
+<h5 class="col-xs-5">Already Added:</h5>
 <table class="table table-striped">
     <tbody>
     {% for goodie in added_list %}
@@ -41,7 +53,7 @@
     {% endfor %}
 </tbody>
 </table>
-    <h1 class="col-xs-4"></h1><a href= {{ url_for('remove_inbasket') }} type="button" class="col-xs-4 btn btn-primary">Delete Items</a><h1 class="col-xs-4"></h1>
+    <h1 class="col-xs-4"></h1><a href= {{ url_for('remove_inbasket') }} type="button" class="col-xs-4 btn btn-success">Delete Added Items</a><h1 class="col-xs-4"></h1>
 
 
 </div>
