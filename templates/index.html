@@ -19,7 +19,7 @@
                 OPTIONS <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li class="btn"><a href="#">Add Item</a></li>
+                <li class="btn"><a href= {{ url_for('adding_item') }}>Add Item</a></li>
                 <li class="btn"><a href="#">Delete All Items</a></li>
                 <li class="btn"><a href="#">Modify Item</a></li>
             </ul>
@@ -53,7 +53,7 @@
     {% endfor %}
 </tbody>
 </table>
-    <h1 class="col-xs-4"></h1><a href= {{ url_for('remove_inbasket') }} type="button" class="col-xs-4 btn btn-success">Delete Added Items</a><h1 class="col-xs-4"></h1>
+    <h1 class="col-xs-4"></h1><a href= {{ url_for('remove_inbasket') }} type="button" class="col-xs-4 btn btn-success">Delete Added</a><h1 class="col-xs-4"></h1>
 
 
 </div>
