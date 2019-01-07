@@ -36,10 +36,17 @@
 </tread>
 <tbody>
 {% for item in todo_list %}
-    <tr>
-    <td class="text-center" style="font-family: 'Major Mono Display', monospace;"><a href= {{ url_for('change_basket_status', item_name = item['item']) }} style="color:black; text-decoration: none;">{{ item['item'].upper() }}</a></td>
-    <td class="text-center visible-md visible-lg" style="font-family: 'Major Mono Display', monospace;">{{ item['user_name'] }}</td>
-    </tr>
+    {% if item['quantity'] == 1 %}
+        <tr>
+            <td class="text-center" style="font-family: 'Major Mono Display', monospace;"><a href= {{ url_for('change_basket_status', item_name = item['item']) }} style="color:black; text-decoration: none;">{{ item['item'].upper() }}</a></td>
+            <td class="text-center visible-md visible-lg" style="font-family: 'Major Mono Display', monospace;">{{ item['user_name'] }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td class="text-center" style="font-family: 'Major Mono Display', monospace;"><a href= {{ url_for('change_basket_status', item_name = item['item']) }} style="color:black; text-decoration: none;">{{ item['item'].upper() }}({{ item['quantity'] }})</a></td>
+            <td class="text-center visible-md visible-lg" style="font-family: 'Major Mono Display', monospace;">{{ item['user_name'] }}</td>
+        </tr>
+    {% endif %}
 {% endfor %}
 </tbody>
 </table>
@@ -47,9 +54,15 @@
 <table class="table table-striped">
     <tbody>
     {% for goodie in added_list %}
-    <tr class="success">
-    <td class="text-center" style="font-family: 'Major Mono Display', monospace;"><del><a href= {{ url_for('change_basket_status', item_name = goodie['item']) }} style="color:black; text-decoration: none;">{{ goodie['item'].upper() }}</a></del></td>
-    </tr>
+        {% if goodie['quantity'] == 1 %}
+            <tr class="success">
+                <td class="text-center" style="font-family: 'Major Mono Display', monospace;"><del><a href= {{ url_for('change_basket_status', item_name = goodie['item']) }} style="color:black; text-decoration: none;">{{ goodie['item'].upper() }}</a></del></td>
+            </tr>
+        {% else %}
+            <tr class="success">
+                <td class="text-center" style="font-family: 'Major Mono Display', monospace;"><del><a href= {{ url_for('change_basket_status', item_name = goodie['item']) }} style="color:black; text-decoration: none;">{{ goodie['item'].upper() }}({{ goodie['quantity'] }})</a></del></td>
+            </tr>
+        {% endif %}
     {% endfor %}
 </tbody>
 </table>
