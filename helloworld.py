@@ -104,7 +104,7 @@ def send():
             "added_to_basket":False
         }
         record['item'] = request.form['item_name'].upper()
-        record['quantity'] = request.form['quantity']
+        record['quantity'] = int(request.form['quantity'])
         current_date = setting_time()
         record['date'] = current_date[0]
         record['time'] = current_date[1]
