@@ -114,6 +114,18 @@ def send():
         db_class.create_document()
         return redirect(url_for('adding_item'))
         
+@app.route('/delete_all')
+#TO_DO add username
+def delete_all_items():
+    user = "Peter"
+    some = "i"
+    thing = "u"
+    f1 = db_app.db_interaction_class(user,some,thing)
+    shoppinglist = f1.view_document()
+    for shopping_item in shoppinglist:
+        f1 = db_app.db_interaction_class(some, shopping_item['item'], some)
+        f1.delete_document()
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
